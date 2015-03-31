@@ -1,5 +1,11 @@
 <?php
 
+spl_autoload_register("loadclass");
+
+function loadclass($class) {
+	include_once(SITE_ROOT . "/engine/" . strtolower($class) . ".php");
+}
+
 class Router {
     public static function Start() {
         $urlArray = @explode("/", $_SERVER["REDIRECT_URL"]);
@@ -9,8 +15,6 @@ class Router {
 		$GLOBALS['driver'] = $dDriver;
 		$GLOBALS['action'] = $dAction;
 		$GLOBALS['link']  = $urlArray;
-		
-		spl_autoload_register("loadclass");
 		
         @include_once(SITE_ROOT. "/engine/controllers/". $dDriver .".php");
 		
@@ -36,10 +40,6 @@ class Router {
 
 		return 1;
     }
-}
-
-function loadclass($class) {
-	include_once(SITE_ROOT . "/engine/" . strtolower($class) . ".php");
 }
 
 ?>
