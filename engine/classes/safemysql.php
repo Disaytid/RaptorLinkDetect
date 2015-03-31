@@ -7,23 +7,11 @@ class SafeMySQL # @author col.shrapnel@gmail.com | @link http://phpfaq.ru/safemy
 		private $stats;
 		private $emode;
 		private $exname;
-		private $defaults = array(
-			'host'      => "localhost",
-			'user'      => "root",
-			'pass'      => "",
-			'db'        => "root",
-			'port'      => NULL,
-			'socket'    => NULL,
-			'pconnect'  => FALSE,
-			'charset'   => 'utf8',
-			'errmode'   => 'error', //or exception
-			'exception' => 'Exception', //Exception class name
-		);
 		const RESULT_ASSOC = MYSQLI_ASSOC;
 		const RESULT_NUM   = MYSQLI_NUM;
 		function __construct($opt = array())
 		{
-			$opt = array_merge($this->defaults,$opt);
+			$opt = @array_merge($GLOBALS['database'],$opt);
 			$this->emode  = $opt['errmode'];
 			$this->exname = $opt['exception'];
 			if ($opt['pconnect'])
