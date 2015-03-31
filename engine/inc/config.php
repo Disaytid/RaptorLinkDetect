@@ -5,7 +5,7 @@
 spl_autoload_register("loadclass");
 
 function loadclass($class) {
-	include_once(SITE_ROOT . "/engine/" . strtolower($class) . ".php");
+	include_once(SITE_ROOT . "/engine/classes/" . strtolower($class) . ".php");
 }
 
 $GLOBALS['config'] = parse_ini_file(SITE_ROOT. "/engine/config.ini");
