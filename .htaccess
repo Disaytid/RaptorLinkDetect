@@ -1,0 +1,17 @@
+Options -Indexes +FollowSymlinks
+
+DirectoryIndex index.php
+
+php_value session.gc_maxlifetime 108000
+php_value session.cookie_lifetime 108000
+
+<FilesMatch ".(htaccess|htpasswd|cfg|ini|lock|cache|conf)$">
+ Order Allow,Deny
+ Deny from all
+</FilesMatch>
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [L]
