@@ -1,11 +1,5 @@
 <?php
 
-spl_autoload_register("loadclass");
-
-function loadclass($class) {
-	include_once(SITE_ROOT . "/engine/" . strtolower($class) . ".php");
-}
-
 class Router {
     public static function Start() {
         $urlArray = @explode("/", $_SERVER["REDIRECT_URL"]);
