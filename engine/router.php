@@ -2,7 +2,7 @@
 
 class Router {
     public static function Start() {
-        $urlArray = @explode("/", $_SERVER["REDIRECT_URL"]);
+    	$urlArray = @explode("/", str_replace($GLOBALS['config']['root'], "", $_SERVER["REDIRECT_URL"]));
         if(!empty($urlArray[1])) { $dDriver = $urlArray[1]; } else { $dDriver = "index"; }
         if(!empty($urlArray[2])) { $dAction = $urlArray[2]; } else { $dAction = "index"; }
 		
